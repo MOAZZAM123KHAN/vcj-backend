@@ -14,6 +14,7 @@ import orderRoutes from "./routes/orderRoutes";
 import blogRoutes from "./routes/blogRoutes";
 import reelRoutes from "./routes/reelRoutes";
 import cartRoutes from "./routes/cartRoutes";
+import goldRateRoutes from "./routes/goldRateRoutes";
 
 const app = express();
 
@@ -40,6 +41,7 @@ app.get("/", (req: Request, res: Response) => {
       orders: "/api/orders",
       blogs: "/api/blogs",
       reels: "/api/reels",
+      goldRate: "/api/gold-rate",
       // upload: "/api/upload",
     },
   });
@@ -54,6 +56,8 @@ app.use("/api/orders", orderRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/reels", reelRoutes);
 app.use("/api/cart", cartRoutes);
+app.use("/api/gold-rate", goldRateRoutes);
+
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   console.error(err.stack);
   res.status(err.status || 500).json({
