@@ -39,6 +39,9 @@ const goldRateSchema = new Schema<IGoldRate>(
     }
 );
 
+// Add index to optimize the /latest endpoint sorting
+goldRateSchema.index({ createdAt: -1 });
+
 export default mongoose.model<IGoldRate>(
     "GoldRate",
     goldRateSchema
